@@ -1,0 +1,49 @@
+Exercício 1
+Escreva uma função que receba os valores de três lados de um triângulo e o classifique como "Equilátero" (todos
+os lados iguais), "Isósceles" (dois lados iguais) ou "Escaleno" (todos os lados diferentes).
+
+Exercício 2
+
+Escreva uma função que recebe um número inteiro e exibe a tabuada de multiplicação desse número, do 1 ao 10.
+
+Exercício 3
+
+Você recebeu um dicionário com os nomes dos alunos e suas respectivas notas. Escreva uma função que calcula a
+média da turma e retorna uma lista com os nomes dos alunos que tiveram nota acima da média.
+
+Exercício 4
+
+Dada uma lista de números, crie uma nova lista usando list comprehension que contenha o quadrado de cada número
+par da lista original.
+
+Exercício 5
+
+Crie uma função chamada dsa_calcula_imc que aceite dois argumentos: peso (em kg) e altura (em metros). A função
+deve calcular o Índice de Massa Corporal (IMC) usando a fórmula IMC=peso/altura^2 e retornar o valor do IMC.
+
+Exercício 6
+
+Você tem uma lista de dicionários, onde cada dicionário representa uma pessoa com nome e idade. Use a função sorted()
+com uma expressão lambda como chave (key) para ordenar a lista de pessoas da mais nova para a mais velha.
+
+Exercício 7
+
+Crie uma função que receba uma lista de números inteiros e retorne um dicionário contendo a contagem de quantos números
+são pares e quantos são ímpares.
+
+Exercício 8
+
+Crie uma função que receba uma lista de strings (potenciais e-mails) e um parâmetro opcional dominio_desejado (com valor
+padrão "gmail.com"). A função deve retornar uma nova lista, usando list comprehension, contendo apenas os e-mails que terminam
+com o domínio desejado.
+
+Exercício 9
+
+Dada uma lista de frases, use a função map() em conjunto com uma expressão lambda para criar uma nova lista onde cada frase é
+convertida para letras maiúsculas e tem a palavra "PYTHON" anexada ao final.
+
+Exercício 10
+
+Crie um jogo onde o computador escolhe um número secreto entre 1 e 20. O jogador tem 5 tentativas para adivinhar. A cada tentativa,
+o programa informa se o palpite foi muito alto ou muito baixo. Se o jogador acertar, o loop deve ser interrompido com uma mensagem
+de vitória.
