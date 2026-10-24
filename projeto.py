@@ -63,16 +63,79 @@ def gera_dados_ficticios(num_registro = 600):
     return pd.DataFrame(dados_vendas)
     
 df_vendas = gera_dados_ficticios(500)
-type(df_vendas)
-df_vendas.shape
-df_vendas.head()
-df_vendas.tail()
-df_vendas.info()
-df_vendas.describe()
-df_vendas.dtypes
+print(type(df_vendas))
+print(df_vendas.shape)
+print(df_vendas.head())
+print(df_vendas.tail())
+print(df_vendas.info())
+print(df_vendas.describe())
+print(df_vendas.dtypes)
 
 df_vendas['Data_Pedido'] = pd.to_datetime(df_vendas['Data_Pedido'])
 df_vendas['Faturamento'] = df_vendas['Preco_Unitario'] * df_vendas[ 'Quantidade']
 df_vendas['Status_Entrega'] = df_vendas['Estado'].apply(lambda estado: 'Rápida' if estado in ['SP', 'RJ', 'MG'] else 'Normal')
-df_vendas.info()
-df_vendas.head()
+print(df_vendas.info())
+print(df_vendas.head())
+
+top_10_produtos = df_vendas.groupby('Nome_Produto')['Quantidade'].sum().sort_values(ascending=False).head(10)
+
+print(top_10_produtos)
+
+sns.set_style('whitegrid')
+plt.figure(figsize=(12,7))
+
+top_10_produtos.sort_values(ascending=True).plot(kind= 'barh', color= 'skyblue')
+plt.title('Top 10 de Produtos', fontsize = 16)
+plt.xlabel('Quantidade Vendida', fontsize = 12)
+plt.ylabel('Produto', fontsize = 12)
+
+print(plt.tight_layout())
+print(plt.show())
+
+df_vendas['Mes'] = df_vendas['Data_Pedido'].dt.to_period('M')
+faturamento_mensal = df_vendas.groupby('Mes')['Faturamento'].sum()
+faturamento_mensal.index = faturamento_mensal.index.strftime('%Y%m')
+print(faturamento_mensal.map('R$ {:.2f}'.format))
+
+plt.figure(figsize = (12, 6))
+faturamento_mensal.plot(kind = 'line', marker = 'o', linestyle = '-', color = 'green')
+plt.title('Evolução do Faturamento Mensal', fontsize = 16)
+plt.xlabel('Mês', fontsize = 12)
+plt.ylabel('Faturamento (R$)', fontsize = 12)
+plt.xticks(rotation = 45)
+plt.grid(True, which = 'both', linestyle = '--', linewidth = 0.5)
+print(plt.tight_layout())
+print(plt.show())
+
+vendas_estado = df_vendas.groupby('Estado')['Faturamento'].sum().sort_values(ascending=False)
+print(vendas_estado.map('R$ {:,.2f}'.format))
+plt.figure(figsize = (12, 7))
+vendas_estado.plot(kind = 'bar', color = sns.color_palette('husl', 7))
+plt.title('Faturamento por Estado', fontsize = 16)
+plt.xlabel('Estado', fontsize = 12)
+plt.ylabel('Faturamento (R$)', fontsize = 12)
+plt.xticks(rotation = 0)
+plt.tight_layout()
+print(plt.show())
+
+faturamento_categoria = df_vendas.groupby('Categoria')['Faturamento'].sum().sort_values(ascending=False)
+print(faturamento_categoria.map('R$ {:,.2f}'.format))
+
+from matplotlib.ticker import FuncFormatter
+faturamento_ordenado = faturamento_categoria.sort_values(ascending=True)
+fig, ax = plt.subplots(figsize=(12, 7))
+def formatar_milhares(y, pos):
+    """Formata os valores do eixo y como milhares (K) com o cifrão R$."""
+    return f'R$ {y/1000:,.0f}K'
+
+formatter = FuncFormatter(formatar_milhares)
+
+ax.yaxis.set_major_formatter(formatter)
+
+faturamento_ordenado.plot(kind='bar', ax=ax, color=sns.color_palette('viridis', len(faturamento_ordenado)))
+ax.set_title('Faturamento por Categoria', fontsize=16)
+ax.set_xlabel('Categoria', fontsize=12)
+ax.set_ylabel('Faturamento (R$)', fontsize=12)
+plt.xticks(rotation=45, ha = 'right')
+plt.tight_layout()
+print(plt.show())

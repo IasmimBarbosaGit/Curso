@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProteinAção — Quantidade ou qualidade proteica?</title>
+    <meta name="description" content="Simulador educativo: descubra a diferença entre quantidade e qualidade proteica, com o milho QPM de Evangelina Villegas.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🌽%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#inicio">🌽 Protein<b>Ação</b></a>
+      <button class="burger" aria-label="Menu" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+      <ul>
+        <li><a href="#conceito">Conceito</a></li>
+        <li><a href="#calculadora">Simulador</a></li>
+        <li><a href="#meu-alimento">Meu alimento</a></li>
+        <li><a href="#evangelina">Seja Evangelina</a></li>
+        <li><a href="#rafael">Um dia do Rafael</a></li>
+        <li><a href="#alimentos">Alimentos</a></li>
+        <li><a href="#fechamento">Sobre</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Simulador educativo · Equipe Cientista Internacional</span>
+        <h1>Você sabe diferenciar <em>quantidade</em> de proteína de <em>qualidade</em> proteica?</h1>
+        <p>Escolha um alimento, descubra quanta proteína ele tem, quais dos 9 aminoácidos essenciais ele entrega e por que um milho especial mudou a vida de milhões de pessoas.</p>
+        <div class="cta">
+          <a class="btn" href="#calculadora">Começar ▸</a>
+          <a class="btn ghost" href="#evangelina">Seja Evangelina</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 400 420" role="img" aria-label="Ilustração de uma espiga de milho">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd84d"/><stop offset="1" stop-color="#f0a800"/></linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fb26f"/><stop offset="1" stop-color="#1f6b40"/></linearGradient>
+          </defs>
+          <circle cx="200" cy="210" r="180" fill="#fff0bf"/>
+          <circle cx="200" cy="210" r="132" fill="#ffe28a" opacity=".6"/>
+          <g transform="rotate(-18 200 210)">
+            <path d="M200 40 C262 70 270 230 232 330 C220 360 180 360 168 330 C130 230 138 70 200 40Z" fill="url(#g1)"/>
+            <g fill="#ffe27a" opacity=".85" id="kernels"></g>
+            <path d="M200 120 C120 150 105 290 140 380 C170 330 190 250 200 120Z" fill="url(#g2)"/>
+            <path d="M200 120 C280 150 295 290 260 380 C230 330 210 250 200 120Z" fill="#37955a"/>
+            <path d="M200 140 C195 230 195 300 200 372" stroke="#1f5c38" stroke-width="3" fill="none" opacity=".4"/>
+          </g>
+                </svg>
+        <div class="chip c1">🧬 9 aminoácidos essenciais</div>
+        <div class="chip c2">⭐ Valor biológico 0–100</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b id="st1">8</b><span>alimentos para comparar</span></div>
+      <div class="stat aa9">
+        <b>9</b>
+        <span class="cap" id="aa9Cap">aminoácidos essenciais</span>
+        <div class="beads" id="aa9Beads" role="group" aria-label="Os 9 aminoácidos essenciais e suas cores"></div>
+        <small>Passe o mouse ou toque nas contas</small>
+      </div>
+      <div class="stat"><b>100</b><span>valor biológico do ovo (referência)</span></div>
+      <div class="stat"><b>80</b><span>valor biológico do milho QPM</span></div>
+    </div>
+  </div>
+
+  <section id="conceito">
+    <div class="wrap">
+      <span class="eyebrow">Ideia central</span>
+      <h2 class="sec-title">Quantidade não é qualidade</h2>
+      <p class="sec-sub">Dois alimentos podem ter quase a mesma quantidade de proteína e entregar resultados muito diferentes ao corpo. Tudo depende dos aminoácidos essenciais.</p>
+      <div class="two">
+        <div class="concept reveal">
+          <div class="ico">⚖️</div>
+          <h3>Quantidade proteica</h3>
+          <p>É quantos gramas de proteína existem no alimento (por 100 g, por exemplo). Responde à pergunta: <b>“quanto tem?”</b></p>
+        </div>
+        <div class="concept reveal">
+          <div class="ico">🧬</div>
+          <h3>Qualidade proteica</h3>
+          <p>Mostra se a proteína traz os <b>9 aminoácidos essenciais</b> — que o corpo não fabrica — nas proporções certas. O valor biológico resume isso numa nota de 0 a 100.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculadora">
+    <div class="wrap">
+      <span class="eyebrow">Telas 2, 3 e 4</span>
+      <h2 class="sec-title">Simulador de proteína</h2>
+      <p class="sec-sub">1) Escolha o alimento · 2) Informe os gramas · 3) Veja a proteína estimada, o perfil de aminoácidos e o valor biológico.</p>
+
+      <div class="foods" id="foods"></div>
+
+      <div class="panel">
+        <div class="weightbox">
+          <h3>⚖️ Quanto de proteína você pode consumir por dia?</h3>
+          <div class="qty">
+            <label for="weight">Seu peso (kg):</label>
+            <input type="number" id="weight" min="10" max="300" step="0.1" inputmode="decimal" placeholder="Ex.: 60">
+          </div>
+          <div class="wres" id="wRes" aria-live="polite"></div>
+        </div>
+        <div class="qty">
+          <label for="grams">Gramas consumidas:</label>
+          <input type="number" id="grams" min="0" max="2000" value="100">
+          <input type="range" id="range" min="0" max="500" step="5" value="100" aria-label="Gramas">
+        </div>
+        <p class="hint">Exemplo: 100 g ≈ meio copo de leite (um copo tem cerca de 200 g).</p>
+        <p class="capmsg" id="capMsg" role="status"></p>
+        <div class="presets">
+          <button data-g="50">50 g</button><button data-g="100">100 g</button><button data-g="150">150 g</button><button data-g="200">200 g</button><button data-g="500">500 g</button>
+        </div>
+
+        <div class="result">
+          <div>
+            <div class="big">
+              <div class="food-name" id="rName">—</div>
+              <small>Proteína estimada</small>
+              <div class="num"><span style="margin:0 4px 0 0;font-size:inherit;opacity:1" id="rProt">0</span><span>g</span></div>
+              <small id="rPer100"></small>
+              <div class="vb">
+                <div class="row"><span>Valor biológico</span><b id="rVB">0</b></div>
+                <div class="track"><div class="fill" id="rVBbar" style="width:0"></div></div>
+                <div class="row" style="margin:8px 0 0;opacity:.85"><span id="rVBtxt"></span></div>
+              </div>
+            </div>
+            <p class="obs" id="rDaily"></p>
+          </div>
+          <div class="aa">
+            <h4>Perfil dos 9 aminoácidos essenciais</h4>
+            <div class="aa-grid" id="aaGrid"></div>
+            <div class="legend"><span><i style="background:var(--high)"></i>Alta</span><span><i style="background:var(--mid)"></i>Média</span><span><i style="background:var(--low)"></i>Baixa (limitante)</span></div>
+            <div class="limit" id="rLimit"></div>
+            <p class="obs" id="rObs"></p>
+          </div>
+        </div>
+        <div class="aviso">⚠️ <b>Isto é uma simulação educativa</b> — não é uma recomendação nutricional nem diagnóstico.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="meu-alimento">
+    <div class="wrap">
+      <span class="eyebrow">Seu alimento</span>
+      <h2 class="sec-title">Adicionar um alimento</h2>
+      <p class="sec-sub">Escreva o nome do alimento e, se quiser, tire uma foto dele. Os alimentos adicionados ficam salvos neste aparelho.</p>
+      <div class="addfood">
+        <div class="panel">
+          <label for="afName">Nome do alimento</label>
+          <input type="text" id="afName" maxlength="40" placeholder="Ex.: Tapioca com ovo" autocomplete="off">
+          <div class="cam-box">
+            <video id="camVideo" playsinline muted hidden></video>
+            <img id="afPreview" alt="Foto do alimento" hidden>
+            <div class="cam-ph" id="camPh"><b>📷</b>Nenhuma foto ainda</div>
+          </div>
+          <div class="af-actions">
+            <button type="button" class="btn corn sm" id="afCam">📷 Tirar foto</button>
+            <button type="button" class="btn ghost sm" id="afGal">🖼️ Escolher da galeria</button>
+            <button type="button" class="btn sm" id="afShot" hidden>Capturar</button>
+            <button type="button" class="btn ghost sm" id="afCancel" hidden>Cancelar</button>
+            <button type="button" class="btn ghost sm" id="afClear" hidden>Remover foto</button>
+          </div>
+          <input type="file" id="afFileCam" accept="image/*" capture="environment" hidden>
+          <input type="file" id="afFileGal" accept="image/*" hidden>
+          <p class="af-msg" id="afMsg" role="status"></p>
+          <button type="button" class="btn" id="afSave">+ Adicionar alimento</button>
+        </div>
+        <div class="panel">
+          <h3>Meus alimentos</h3>
+          <div class="af-list" id="afList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="evangelina">
+    <div class="wrap">
+      <span class="eyebrow">Tela 5</span>
+      <h2 class="sec-title">Seja Evangelina</h2>
+      <p class="sec-sub">Compare as duas amostras de milho e decida, como a cientista Evangelina Villegas, qual delas melhora a qualidade proteica.</p>
+      <p class="quiz-q">“Qual amostra você selecionaria para melhorar a qualidade proteica do milho?”</p>
+      <div class="vs" id="vs"></div>
+      <div class="feedback" id="fb"></div>
+    </div>
+  </section>
+
+  <section id="rafael">
+    <div class="wrap">
+      <span class="eyebrow">Tela 7</span>
+      <h2 class="sec-title">Um dia do Rafael</h2>
+      <p class="sec-sub">Rafael é um personagem fictício. Adicione as refeições dele e veja a barra de progresso chegar à meta de referência.</p>
+      <div class="rafael">
+        <div class="panel persona reveal">
+          <div class="av">🧑‍🎓</div>
+          <h3>Rafael, 16 anos</h3>
+          <p>Personagem de exemplo do nosso app</p>
+          <div class="meta"><small>Meta diária de referência</small><br><b id="meta">60</b><b style="font-size:1.1rem"> g de proteína</b></div>
+          <p>A meta é fixa para ele. Para ver a sua, use o campo de peso no <a href="#calculadora">simulador</a>.</p>
+        </div>
+        <div class="panel reveal">
+          <div id="meals"></div>
+          <div class="pbar">
+            <div class="head"><span>Progresso do dia</span><span id="pTotal">0 g / 60 g</span></div>
+            <div class="trk"><div class="fill" id="pFill"></div></div>
+            <div class="foot"><span id="pLeft"></span><button class="btn ghost sm" id="reset">↺ Reiniciar dia</button></div>
+            <div class="congrats" id="congrats">🎉 Meta do Rafael atingida! A barra para em 100%.</div>
+          </div>
+          <p class="note" id="allTotal"></p>
+          <p class="note">Educativo: este exemplo mostra como somar a proteína de várias refeições. Não substitui orientação de nutricionista.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="alimentos" style="background:#fff">
+    <div class="wrap">
+      <span class="eyebrow">Tabela de referência</span>
+      <h2 class="sec-title">Dados dos alimentos</h2>
+      <p class="sec-sub">Valores ilustrativos usados pelo simulador. Proteína por 100 g e valor biológico de referência.</p>
+      <div class="tw"><table id="tbl"></table></div>
+      <p class="src">Valores <b>ilustrativos</b>. Proteína total: confirmar na TACO (UNICAMP). Aminoácidos e valor biológico: USDA FoodData Central ou tabelas FAO/INFOODS. Milho QPM: Mertz et al. (1964, <i>Science</i>). Níveis baixa/média/alta são padrões ilustrativos, não medições da equipe.</p>
+    </div>
+  </section>
+
+  <section id="fechamento">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Tela 6 · Fechamento</span>
+        <h2>Evangelina Villegas e o milho QPM</h2>
+        <p>Evangelina Villegas foi a cientista que, junto de seus colegas, desenvolveu o milho de proteína de qualidade (QPM): mais lisina e triptofano, com um valor biológico muito mais alto que o do milho comum.</p>
+        <p>A quantidade de proteína quase não mudou. O que mudou foi a <b>qualidade</b> — e isso faz toda a diferença na nutrição.</p>
+        <div class="question">Nossa pergunta de pesquisa: como a qualidade da proteína muda o que um alimento realmente oferece ao corpo?</div>
+      </div>
+      <div class="diario">
+        <h3>📔 Diário de Bordo</h3>
+        <p>Acompanhe o processo da equipe no nosso Sway.</p>
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjoAAAI6AQAAAAAGM99tAAAFnElEQVR4nO2dXYrjOhCFv7o29KMDWcAsxdlBL6mZJc0O7KX0Agasx4BN3Qf9OvMykG6uuDl6CEmsfFhQEaWjU7I5X9LWf76GAwIJJJBAAgkkkEACCfR/AVlqI3bjMAhmdosvI2Y2AvGdGesF4lUzM7t9xx0JJNCXgGZ3d98AwpubXcAXhri89IXD6nf28WkGDO7u7mfQl92RQAI912J0zhswb4PD5O7LtKerCwDTji+Te+6y584MHv8VS39DE+ilQePDZ19v427w5qzvv0dj2rB5OTAYd5juFvsRvumOBBLoK9pjZNu8XckZxuBGMFgNnHAtvYY/VfD+hiaQQKQcBPCfF2C1EeAw922ICbjdprv5wuC+hPR/cPf92+5IIIGeau0qkCFl0n/1kn+kPFugDkFx9q3Jha8/dlgvmMPdWC8DTjgMOMzXy4CvlwGYzhlJf0MT6KVBWRupaQVE4cN9g6QEAjFhSRP84FkqQXO2QF2CSOG6De7uO+5bFvJ8g5x0DG3CUn+7FIAiW6C+QDkwGWJ4p+82YlDHNeLsSc9OK8hpJ4raUdlWZAvUHyjP2e5xkwZyjMcpfIl7MXkyh7p7UzorsgXqD1SykfJxG/LUDHFCjlHcyCJ5Cq+5tyJboM5AURsxGPb0Lm6sH+azA6sNOwQrisjdIFyd+dNwgmVdpb+hCfTSoJxnTztJDIk5SGnRIwIUj0i0kaTlJsqzBeoSVPLsPa8Ws+cpxXh8560IWMxQOQtXZAvUHSjvQeZMup29t6qDtFJ26uxJG1GeLVDHoHk7LAl54c3tNrmz/rhnG/YGEMx84YgvyVoSRuz2LXckkEDPtar6xX2XqHlQth+zYp1etppsu7IRgXoH2S2Y1S12d3e3GzWdzr6RBWA1s2T4y3btfocm0IuCGq9fk1jPXifkaijJecm80SwtNWcL1CPovAdZBb9cFAbQuJ8oWzjn3yqyBeoM1OjZsc1Z68u1kbnfMuXNdqazo1uRLVB/oFOFb6PrFSm7+FkbB4nvbWdFtkAdgtqamvnB80SJ561cLVJ2u6OjyBaoW1D1pG5QQ9lupPD2n5d08giEt5KFF7t2v0MT6CVBjT87fo65xVTyknPnxwuTtBGBOgcdFhPrn2aWToGactFBSrYHhzDi7qmKHYJJzxaoS1Bysc5+jBBPWxh2Y9pHh2OEcMFggPV9xwBSLE+/rZ3S+xuaQC8NKivIUlHQ1NQUsTrr2Vn1q2YorSAF6hPU1q43Xr/GKEJj3M6lv8UlpTxboE5Bbe36MrUm7fyuBPXWlv7mC9qDFKhPUNmD9LxGrEU0D7vr8R9QLmRlW5EtUI+gk6upJCJMdV+yVou1Z2o3ca/IFqhn0GH28TnCegHmz5EYu+vlHMrx2ErwJYxxMrfbN92RQAI90xr1g/zSHM1QT1utC8olu0rqBc3ZAnUGOmUjVKPI0JTYnLS+YjIpKbayEYE6BDVev0cJpEh61SrVzuilQkGRLVCHoFYbWfJBC01yUgofk3zifrID6lw/gToFFUfUyan9aOQrdu1yYmXWCaWNCNQnqNldb47JSbuRRcCm3YOsgp/OzxaoW1C7CvRT2NZKmiyV5F+UFFuVBwJ1DqrP8GX+fEspSVS2N7Abh9nHuUaMMDbFCf0OTaAXBbWqnzf1YFkCqdbsJJo8HD+sOVugvkGhPEA9P3c9H5OTHkydpezD7MPdWa0UHXzPHQkk0FOtUUTq4rEYnxoJpJ4WTxFI6kNtNGcL1Bfoj6dTEw7zWFMTUsadi2g2bN6uu82/rjBvB8Z0z4U1/Q1NoJcGPebZac+mOEPmWm/g1btaOoNUP4G6BKU5e43z8oDFnZowYvN2AOEChOseO8y/xh3CdWd9vxvzli90ODSBXhp0qtJ9oq39DU0ggQQSSCCBBBJIIIH+M9C/XxHy8j0ltdQAAAAASUVORK5CYII=" alt="QR code do Diário de Bordo da equipe"></div>
+        <a class="btn corn" href="#" id="diarioLink">Abrir Diário de Bordo</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>ProteinAção</b> — Equipe Cientista Internacional · Simulação educativa, não é recomendação nutricional nem diagnóstico.
+  </footer>
+
+  </body>
+</html>
